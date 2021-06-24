@@ -61,11 +61,3 @@ if __name__ == '__main__':
     for symbol, data in data_map.items():
         print(symbol, data['coverage'])
         print(data['data'])
-
-
-                
-        
-        
-        
-    
-        
