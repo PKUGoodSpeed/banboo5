@@ -32,7 +32,7 @@ class PriceMovementTarget:
         verbose: 0: the movement ratio; 1: the sliding window aggr; 2: next day price.
         """
         next_day_price = data[price_col].shift(-1).astype(float)
-        future_xday_agg = data[price_col].rolling(horizon).agg(
+        future_xday_agg = data[price_col].rolling(horizon, min_periods=1).agg(
             sliding_aggr_mode).shift(-horizon).astype(float)
         price_moving_ratio = future_xday_agg / (next_day_price + 1.E-10)
         data[f'future_{horizon}day_{sliding_aggr_mode}_{price_col}_ratio'] = price_moving_ratio
